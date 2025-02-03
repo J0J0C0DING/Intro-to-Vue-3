@@ -1,9 +1,20 @@
 const app = Vue.createApp({
     data() {
         return {
-            cart: 0,
-            premium: true
+            cart: [],
+            premium: true,
         }
     },
-    methods: {}
+    methods: {
+        updateCart(id) {
+            this.cart.push(id)
+        },
+        removeFromCart(id) {
+            const index = this.cart.indexOf(id)
+            if (index > -1) {
+                // only splice array when item is found
+                this.cart.splice(index, 1) // 2nd parameter means remove one item only
+            }
+        },
+    },
 })
